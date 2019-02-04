@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Text, StyleSheet, View, FlatList,
+  StyleSheet, View, FlatList,
 } from 'react-native';
 import Tarea from './Tarea';
 

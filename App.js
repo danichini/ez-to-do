@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  StyleSheet, View, AsyncStorage, Button,
+} from 'react-native';
 
 import Header from './Header';
 import Body from './Body';
@@ -20,6 +22,10 @@ export default class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.recuperarEnTelefono();
+  }
+
   establecerTexto = (value) => {
     console.log(value);
     this.setState({ texto: value });
@@ -27,8 +33,10 @@ export default class App extends React.Component {
 
   agregarTarea = () => {
     const { tareas, texto } = this.state;
+    const nuevasTareas = [...tareas, { texto, key: Date.now().toString() }];
+    this.guardarEnTelefono(nuevasTareas);
     this.setState({
-      tareas: [...tareas, { texto, key: Date.now().toString() }],
+      tareas: nuevasTareas,
       texto: '',
     });
   }
@@ -36,9 +44,38 @@ export default class App extends React.Component {
   eliminarTarea = (id) => {
     const { tareas } = this.state;
     const nuevasTareas = tareas.filter(tarea => tarea.key !== id);
+    this.guardarEnTelefono(nuevasTareas);
     this.setState({
       tareas: nuevasTareas,
     });
+  }
+
+  guardarEnTelefono = (tareas) => {
+    AsyncStorage.setItem('@AppCursoUdemy:tareas',
+      JSON.stringify(tareas))
+      .then((valor) => {
+        console.log(valor);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  recuperarEnTelefono = () => {
+    AsyncStorage.getItem('@AppCursoUdemy:tareas')
+      .then((valor) => {
+        console.log(valor);
+        console.log(JSON.parse(valor));
+        if (valor !== null) {
+          const nuevasTareas = JSON.parse(valor);
+          this.setState({
+            tareas: nuevasTareas,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {

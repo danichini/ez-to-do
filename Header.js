@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Text, StyleSheet, View, TextInput,
+  StyleSheet, View, TextInput,
 } from 'react-native';
 
 
