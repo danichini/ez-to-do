@@ -13,13 +13,12 @@ const styles = StyleSheet.create({
 
 export default class Body extends Component {
   render() {
-    const { tareas } = this.props;
+    const { tareas, eliminar } = this.props;
     return (
       <View style={styles.container}>
-        <Text> Body </Text>
         <FlatList
           data={tareas}
-          renderItem={({ item }) => <Tarea item={item} />
+          renderItem={({ item }) => <Tarea item={item} eliminar={eliminar} />
           }
         />
       </View>

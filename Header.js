@@ -21,7 +21,6 @@ export default class Header extends Component {
     const { cambiarTexto, agregar, texto } = this.props;
     return (
       <View style={styles.container}>
-        <Text> Header </Text>
         <TextInput
           style={styles.texto}
           placeholder="Aqui escribe tu texto..."
