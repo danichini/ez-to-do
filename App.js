@@ -25,16 +25,17 @@ export default class App extends React.Component {
     this.setState({ texto: value });
   }
 
-  agregarTarea = (tarea) => {
-    const { tareas } = this.state;
+  agregarTarea = () => {
+    const { tareas, texto } = this.state;
     this.setState({
-      tareas: [...tareas, tarea],
+      tareas: [...tareas, { texto, key: Date.now().toString() }],
       texto: '',
     });
   }
 
+
   render() {
-    const { texto } = this.state;
+    const { texto, tareas } = this.state;
 
     return (
       <View style={styles.container}>
@@ -44,7 +45,9 @@ export default class App extends React.Component {
           texto={texto}
         />
         <Text>{texto}</Text>
-        <Body />
+        <Body
+          tareas={tareas}
+        />
       </View>
     );
   }

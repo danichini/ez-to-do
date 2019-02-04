@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   },
   texto: {
     padding: 16,
+    fontSize: 24,
   },
 });
 
