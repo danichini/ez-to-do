@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  StyleSheet, View, AsyncStorage, Button,
+  StyleSheet, View, AsyncStorage, ImageBackground,
 } from 'react-native';
 
 import Header from './Header';
@@ -9,9 +9,10 @@ import Body from './Body';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
 });
+
+const vapor = require('./assets/vapor.jpg');
 
 export default class App extends React.Component {
   constructor() {
@@ -82,17 +83,20 @@ export default class App extends React.Component {
     const { texto, tareas } = this.state;
 
     return (
-      <View style={styles.container}>
-        <Header
-          cambiarTexto={this.establecerTexto}
-          agregar={this.agregarTarea}
-          texto={texto}
-        />
-        <Body
-          tareas={tareas}
-          eliminar={this.eliminarTarea}
-        />
-      </View>
+
+      <ImageBackground source={vapor} style={{ width: '100%', height: '100%' }}>
+        <View style={styles.container}>
+          <Header
+            cambiarTexto={this.establecerTexto}
+            agregar={this.agregarTarea}
+            texto={texto}
+          />
+          <Body
+            tareas={tareas}
+            eliminar={this.eliminarTarea}
+          />
+        </View>
+      </ImageBackground>
     );
   }
 }

@@ -9,7 +9,11 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
+    backgroundColor: '#e33366',
+    borderRadius: 16,
+    borderWidth: 3,
+    padding: 20,
+    marginTop: 3,
   },
 });
 

@@ -7,7 +7,6 @@ import Tarea from './Tarea';
 const styles = StyleSheet.create({
   container: {
     flex: 8,
-    backgroundColor: '#e33366',
   },
 });
 

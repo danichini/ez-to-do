@@ -9,10 +9,14 @@ const styles = StyleSheet.create({
     flex: 2,
     justifyContent: 'center',
     backgroundColor: '#aa3399',
+    borderRadius: 16,
+    borderWidth: 2,
+    marginTop: 28,
   },
   texto: {
     padding: 16,
     fontSize: 24,
+    color: '#fff',
   },
 });
 
@@ -23,7 +27,7 @@ export default class Header extends Component {
       <View style={styles.container}>
         <TextInput
           style={styles.texto}
-          placeholder="Aqui escribe tu texto..."
+          placeholder="Escribe algo pls..."
           onChangeText={cambiarTexto}
           onSubmitEditing={agregar}
           value={texto}
